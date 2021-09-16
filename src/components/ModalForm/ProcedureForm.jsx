@@ -27,11 +27,9 @@ const ProcedureForm = ({
       ...procedureActually,
       [e.target.name]: e.target.value,
     });
-
     const updateProcedures = procedures.map((procedure) =>
       procedures.indexOf(procedure) === index ? procedureActually : procedure
     );
-
     setNewProcedures(updateProcedures);
   };
 
@@ -40,11 +38,9 @@ const ProcedureForm = ({
       ...procedureActually,
       [e.target.name]: e.target.value,
     });
-
     const updateProcedures = procedures.map((procedure) =>
       procedures.indexOf(procedure) === index ? procedureActually : procedure
     );
-
     setNewProcedures(updateProcedures);
   };
 
@@ -54,7 +50,12 @@ const ProcedureForm = ({
         aria-label="close"
         className={classes.deleteButton}
         size="small"
-        onClick={() => deleteProcedure(procedure._id)}
+        onClick={() => {
+          if (procedures[index + 1]) {
+            setProcedureActually(procedures[index + 1]);
+          }
+          deleteProcedure(procedure._id);
+        }}
       >
         <img src={trashIcon} alt="" />
       </IconButton>
@@ -68,6 +69,7 @@ const ProcedureForm = ({
           name="name"
           onChange={handleChange}
           onBlur={handleBlur}
+          defaultValue={name}
           value={name}
         />
       </div>
@@ -81,6 +83,7 @@ const ProcedureForm = ({
           name="code"
           onChange={handleChange}
           onBlur={handleBlur}
+          //defaultValue={code}
           value={code}
         />
       </div>
@@ -94,6 +97,7 @@ const ProcedureForm = ({
           name="reclaimed"
           onChange={handleChange}
           onBlur={handleBlur}
+          //defaultValue={reclaimed}
           value={reclaimed}
         />
       </div>
@@ -108,6 +112,7 @@ const ProcedureForm = ({
           name="difference"
           onChange={handleChange}
           onBlur={handleBlur}
+          //defaultValue={difference}
           value={difference}
         />
       </div>
@@ -122,6 +127,7 @@ const ProcedureForm = ({
           name="authorized"
           onChange={handleChange}
           onBlur={handleBlur}
+          // defaultValue={authorized}
           value={authorized}
         />
       </div>

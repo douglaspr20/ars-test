@@ -112,18 +112,16 @@ const ModalForm = ({ setOpenModal }) => {
 
       <div className={classes.modalBody}>
         {newProcedures.length > 0 ? (
-          newProcedures.map((procedure, i) => {
-            return (
-              <ProcedureForm
-                procedure={procedure}
-                procedures={newProcedures}
-                setNewProcedures={setNewProcedures}
-                key={i}
-                index={i}
-                deleteProcedure={deleteProcedure}
-              />
-            );
-          })
+          newProcedures.map((newProcedure, i) => (
+            <ProcedureForm
+              procedure={newProcedure}
+              procedures={newProcedures}
+              setNewProcedures={setNewProcedures}
+              key={i}
+              index={i}
+              deleteProcedure={deleteProcedure}
+            />
+          ))
         ) : (
           <ProcedureForm />
         )}
