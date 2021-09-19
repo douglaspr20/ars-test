@@ -18,7 +18,15 @@ const ProcedureForm = ({
 }) => {
   const classes = useStyles();
 
-  const [procedureActually, setProcedureActually] = useState(procedure);
+  const [procedureActually, setProcedureActually] = useState(
+    procedure || {
+      name: "",
+      code: "",
+      reclaimed: "",
+      difference: "",
+      authorized: "",
+    }
+  );
 
   const { name, code, reclaimed, difference, authorized } = procedureActually;
 

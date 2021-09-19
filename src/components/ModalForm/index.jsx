@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 //Material Ui
 import { Button, Typography, makeStyles, IconButton } from "@material-ui/core";
 //Styles
@@ -30,6 +30,15 @@ const ModalForm = ({ setOpenModal }) => {
 
   const [newProcedures, setNewProcedures] = useState(procedures);
   const [proceduresToDelete, setProceduresToDelete] = useState([]);
+
+  useEffect(() => {
+    if (procedures.length === 0) {
+      setNewProcedures([
+        ...newProcedures,
+        { name: "", code: "", reclaimed: "", difference: "", authorized: "" },
+      ]);
+    }
+  }, []);
 
   const handleNewProcedures = () => {
     setNewProcedures([
@@ -80,6 +89,8 @@ const ModalForm = ({ setOpenModal }) => {
 
     setProceduresToDelete([...proceduresToDelete, procedureId]);
   };
+
+  console.log(newProcedures);
 
   return (
     <div className={classes.root}>
